@@ -1,0 +1,29 @@
+$color-main: #336699;
+$color-dark: #29527a;
+$color-light: #5c85ad;
+$color-white: #ebf0f5;
+
+$time-fast: 0.1s;
+$time-normal: 0.2s;
+
+.button {
+  background-color: $color-light;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px $color-dark;
+  color: $color-white;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px 16px;
+  transition: box-shadow $time-fast, transform $time-fast;
+
+  &:hover, &:focus {
+    box-shadow: 0 8px $color-dark;
+    transform: translate(0, -4px);
+  }
+
+  &:active {
+    box-shadow: 0 4px $color-dark;
+    transform: none;
+  }
+}
