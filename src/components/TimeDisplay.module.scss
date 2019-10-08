@@ -2,12 +2,13 @@
 
 .timeDisplay {
   background: $color-white;
-  border: none;
+  border: 1px solid $color-dark;
   border-radius: 8px;
-  box-shadow: 0 $depth-max $color-dark;
+  box-shadow: 0 $depth-min $color-dark;
   color: $color-light;
   display: inline-block;
   font-family: mono;
   font-size: 64px;
+  margin: $margin;
   padding: $padding;
 }

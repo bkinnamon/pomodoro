@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPause, faPlay, faStop } from '@fortawesome/free-solid-svg-icons';
+
+import TimeDisplay from './components/TimeDisplay';
+import Button from './components/Button';
 
 function App() {
+  const [playing, setPlaying] = useState(false);
+
+  const toggleIcon = playing ? faPause : faPlay;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <TimeDisplay>00:00</TimeDisplay>
+      </div>
+      <div>
+        <Button onClick={() => setPlaying(!playing)} label="play/pause">
+          <FontAwesomeIcon icon={toggleIcon} />
+        </Button>
+        <Button onClick={() => setPlaying(false)} label="stop">
+          <FontAwesomeIcon icon={faStop} />
+        </Button>
+      </div>
     </div>
   );
 }

@@ -8,5 +8,7 @@ $time-normal: 0.2s;
 
 $depth-max: 8px;
 $depth-min: 4px;
+$depth: $depth-max - $depth-min;
 
 $padding: 8px 16px;
+$margin: 4px 4px (4px + $depth-min) 4px;
