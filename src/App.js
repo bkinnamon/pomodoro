@@ -23,6 +23,7 @@ export default () => {
   const stopTimer = () => {
     if(interval) clearInterval(interval)
     interval = null;
+    setMaxTime(0);
     setElapsed(0);
   }
 
@@ -34,7 +35,6 @@ export default () => {
 
   if (elapsed === maxTime && interval) {
     stopTimer();
-    setMaxTime(0);
   }
 
   return (
@@ -46,7 +46,7 @@ export default () => {
         <Button onClick={() => startTimer(25)} label="start work">
           <FontAwesomeIcon icon={faBriefcase} />
         </Button>
-        <Button onClick={() => startTimer(1)} label="start break">
+        <Button onClick={() => startTimer(5)} label="start break">
           <FontAwesomeIcon icon={faCoffee} />
         </Button>
         <Button onClick={() => stopTimer()} label="stop">
