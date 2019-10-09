@@ -1,0 +1,65 @@
+@import '../variables';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  display: flex;
+  color: $color-main;
+  flex-direction: column;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.header__title {
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.header__link {
+  color: $color-light;
+  display: inline-block;
+  padding: $padding;
+  text-decoration: none;
+  transition: color $time-normal;
+}
+
+.header__link:hover {
+  color: $color-main;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.footer__link {
+  color: $color-light;
+  margin: 1rem;
+  text-decoration: none;
+  transition: color $time-normal;
+}
+
+.footer__link:hover {
+  color: $color-main;
+}

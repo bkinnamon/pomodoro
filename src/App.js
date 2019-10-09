@@ -1,30 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPause, faPlay, faStop } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faCoffee, faStop } from '@fortawesome/free-solid-svg-icons';
 
-import TimeDisplay from './components/TimeDisplay';
 import Button from './components/Button';
+import Layout from './components/Layout';
+import TimeDisplay from './components/TimeDisplay';
 
-function App() {
-  const [playing, setPlaying] = useState(false);
+const secondsInMin = 60;
+const millisInSec =  1000;
+let interval = null;
 
-  const toggleIcon = playing ? faPause : faPlay;
+const twoDigitString = num => num >= 10 ? num : `0${num}`;
+
+export default () => {
+  const [elapsed, setElapsed] = React.useState(0);
+  const [maxTime, setMaxTime] = React.useState(0);
+
+  const minutes = Math.floor((maxTime - elapsed) / secondsInMin)
+  const seconds = (maxTime - elapsed) % secondsInMin
+  const time = `${twoDigitString(minutes)}:${twoDigitString(seconds)}`
+
+  const stopTimer = () => {
+    if(interval) clearInterval(interval)
+    interval = null;
+    setElapsed(0);
+  }
+
+  const startTimer = max => {
+    stopTimer();
+    setMaxTime(max * secondsInMin);
+    interval = setInterval(() => setElapsed(e => e + 1), millisInSec);
+  }
+
+  if (elapsed === maxTime && interval) {
+    stopTimer();
+    setMaxTime(0);
+  }
 
   return (
-    <div>
+    <Layout>
       <div>
-        <TimeDisplay>00:00</TimeDisplay>
+        <TimeDisplay>{time}</TimeDisplay>
       </div>
       <div>
-        <Button onClick={() => setPlaying(!playing)} label="play/pause">
-          <FontAwesomeIcon icon={toggleIcon} />
+        <Button onClick={() => startTimer(25)} label="start work">
+          <FontAwesomeIcon icon={faBriefcase} />
         </Button>
-        <Button onClick={() => setPlaying(false)} label="stop">
+        <Button onClick={() => startTimer(1)} label="start break">
+          <FontAwesomeIcon icon={faCoffee} />
+        </Button>
+        <Button onClick={() => stopTimer()} label="stop">
           <FontAwesomeIcon icon={faStop} />
         </Button>
       </div>
-    </div>
+    </Layout>
   );
 }
-
-export default App;
