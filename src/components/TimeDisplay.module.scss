@@ -12,3 +12,10 @@
   margin: $margin;
   padding: $padding;
 }
+
+.dark {
+  background: $color-dark;
+  border: 1px solid $color-main;
+  box-shadow: 0 $depth-min $color-main;
+  color: $color-light;
+}
