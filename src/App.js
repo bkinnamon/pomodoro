@@ -40,12 +40,9 @@ export default () => {
 
   if (elapsed === maxTime && interval) {
     stopTimer();
-    toggleDarkMode()
-    setTimeout(toggleDarkMode, 500)
-    setTimeout(toggleDarkMode, 1000)
-    setTimeout(toggleDarkMode, 1500)
-    setTimeout(toggleDarkMode, 2000)
-    setTimeout(toggleDarkMode, 2500)
+    for(let i = 0; i < 6; i++) {
+      setTimeout(toggleDarkMode, i * 500)
+    }
   }
 
   return (
@@ -57,7 +54,7 @@ export default () => {
         <Button onClick={() => startTimer(25)} label="start work">
           <FontAwesomeIcon icon={faBriefcase} />
         </Button>
-        <Button onClick={() => startTimer(0.1)} label="start break">
+        <Button onClick={() => startTimer(5)} label="start break">
           <FontAwesomeIcon icon={faCoffee} />
         </Button>
         <Button onClick={() => stopTimer()} label="stop">
