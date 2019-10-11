@@ -1,65 +1,96 @@
 @import '../variables';
 
 body {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .page {
-  display: flex;
-  color: $color-main;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  height: 100vh;
+	background: $color-white;
+	color: $color-main;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
+	height: 100vh;
+	transition: all $time-fast;
 }
 
 .header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 2rem;
 }
 
 .header__title {
-  font-size: 1.3rem;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
+	font-size: 1.3rem;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
 }
 
 .header__link {
-  color: $color-light;
-  display: inline-block;
-  padding: $padding;
-  text-decoration: none;
-  transition: color $time-normal;
+	color: $color-light;
+	display: inline-block;
+	padding: $padding;
+	text-decoration: none;
+	transition: all $time-normal;
 }
 
 .header__link:hover {
-  color: $color-main;
+	color: $color-main;
 }
 
 .main {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
+	align-items: center;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .footer {
-  padding: 1rem 2rem;
-  text-align: center;
+	padding: 1rem 2rem;
+	text-align: center;
 }
 
 .footer__link {
-  color: $color-light;
-  margin: 1rem;
-  text-decoration: none;
-  transition: color $time-normal;
+	color: $color-light;
+	margin: 1rem;
+	text-decoration: none;
+	transition: all $time-normal;
 }
 
 .footer__link:hover {
-  color: $color-main;
+	color: $color-main;
+}
+
+.dark {
+	background: $color-dark;
+	color: $color-white;
+
+	.header__link {
+		color: $color-white;
+
+		&:hover {
+			color: $color-light;
+		}
+	}
+
+	.footer__link {
+		color: $color-white;
+
+		&:hover {
+			color: $color-light;
+		}
+	}
+}
+
+.page--dark .header__link {
+	color: $color-white;
+}
+
+.page--dark .header__link:hover {
+	color: $color-light;
 }
