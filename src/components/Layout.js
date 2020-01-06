@@ -3,11 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faLightbulb as faLightbulbOff } from "@fortawesome/free-solid-svg-icons";
 import { faLightbulb as faLightbulbOn } from "@fortawesome/free-regular-svg-icons";
+import { faBell, faBellSlash } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Layout.module.scss";
 import Button from "./Button";
 
-export default ({ children, darkMode, onToggleTheme }) => {
+export default ({
+  children,
+  darkMode,
+  notificationsOn,
+  onToggleNotifications,
+  onToggleTheme
+}) => {
   return (
     <div className={styles.page + (darkMode ? ` ${styles.dark}` : "")}>
       <header className={styles.header}>
@@ -21,6 +28,13 @@ export default ({ children, darkMode, onToggleTheme }) => {
           >
             brettk.dev
           </a>
+          <Button
+            darkMode={darkMode}
+            onClick={onToggleNotifications}
+            label="toggle notifications"
+          >
+            <FontAwesomeIcon icon={notificationsOn ? faBell : faBellSlash} />
+          </Button>
           <Button
             darkMode={darkMode}
             onClick={onToggleTheme}
